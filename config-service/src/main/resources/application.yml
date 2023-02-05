@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: eureka
+          default-label: multiple-instances
           uri: https://github.com/JosseG/spring-microservices-learn
           search-paths: config-data
   application:
