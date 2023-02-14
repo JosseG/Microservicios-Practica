@@ -95,7 +95,7 @@ public class UserController {
     //Fallback methods CB
 
     private ResponseEntity<List<Car>> fallbackgetCars(@PathVariable("userid") int userId,Exception e){
-        return new ResponseEntity("El usuario no tiene vehiculos jajajaj", HttpStatus.OK);
+        return new ResponseEntity("El usuario no tiene vehiculos jijiji", HttpStatus.OK);
     }
 
 

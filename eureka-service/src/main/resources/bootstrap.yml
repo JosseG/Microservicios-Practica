@@ -6,3 +6,10 @@ spring:
     config:
       enabled: true
       uri: http://localhost:8081
+
+
+eureka:
+  server:
+    renewal-percent-threshold: 0.85
+
+
