@@ -4,7 +4,10 @@ import com.josegq.userservice.entity.User;
 import com.josegq.userservice.model.Bike;
 import com.josegq.userservice.model.Car;
 import com.josegq.userservice.service.UserService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import org.apache.http.protocol.HTTP;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +49,7 @@ public class UserController {
         return ResponseEntity.ok(userSaved);
     }
 
+    @CircuitBreaker(name = "carsCB", fallbackMethod = "fallbackgetCars")
     @GetMapping("/cars/{userid}")
     public ResponseEntity<List<Car>> getCars(@PathVariable("userid") int userId){
         User userOwned = userService.getUserById(userId);
@@ -87,6 +91,13 @@ public class UserController {
         Map<String, Object> result = userService.getUserAndVehicles(userId);
         return  ResponseEntity.ok(result);
     }
+
+    //Fallback methods CB
+
+    private ResponseEntity<List<Car>> fallbackgetCars(@PathVariable("userid") int userId,Exception e){
+        return new ResponseEntity("El usuario no tiene vehiculos jajajaj", HttpStatus.OK);
+    }
+
 
 
 }
