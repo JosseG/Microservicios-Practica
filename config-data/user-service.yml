@@ -12,18 +12,14 @@ eureka:
 
 
 spring:
-  h2:
-    console:
-      enabled: true
   # ===============================
   # DB
   # ===============================
   datasource:
-    url: jdbc:h2:mem:invoiceDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    platform: h2
-    username: sa
-    password:
+    url: jdbc:mysql://localhost:3036/invoiceDB
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: user
 
   # ===============================
   # JPA / HIBERNATE
@@ -32,7 +28,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     properties:
       hibernate:
         show_sql: true
