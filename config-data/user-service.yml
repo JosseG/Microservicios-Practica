@@ -16,7 +16,7 @@ spring:
   # DB
   # ===============================
   datasource:
-    url: jdbc:mysql://localhost:3036/invoiceDB
+    url: jdbc:mysql://localhost:3306/invoiceDB
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
     password: user
@@ -28,7 +28,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect  
     properties:
       hibernate:
         show_sql: true
