@@ -1,6 +1,6 @@
 package com.josegq.carservice.controller;
 
-import com.josegq.carservice.entity.Car;
+import com.josegq.carservice.document.Car;
 import com.josegq.carservice.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +41,13 @@ public class CarController {
         Car carSaved = carService.save(car);
 
         return ResponseEntity.ok(carSaved);
+    }
+
+    @PostMapping("/saveall")
+    public ResponseEntity<List<Car>> saveAll(@RequestBody List<Car> cars ){
+        List<Car> carsSaved = carService.saveAll(cars);
+
+        return ResponseEntity.ok(carsSaved);
     }
 
     @GetMapping("/byuser/{userId}")

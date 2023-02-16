@@ -32,6 +32,11 @@ public class BikeService {
         return bikenow;
     }
 
+    public List<Bike> saveAll(List<Bike> bikes){
+        List<Bike> bikesnow = bikeRepository.saveAll(bikes);
+        return bikesnow;
+    }
+
     public List<Bike> getBikesByUserId(int userId){
         return bikeRepository.findByUserId(userId);
     }

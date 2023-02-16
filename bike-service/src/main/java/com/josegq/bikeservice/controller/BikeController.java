@@ -43,6 +43,13 @@ public class BikeController {
         return ResponseEntity.ok(bikeSaved);
     }
 
+    @PostMapping("/saveall")
+    public ResponseEntity<List<Bike>> saveAll(@RequestBody List<Bike> bikes ){
+        List<Bike> bikesSaved = bikeService.saveAll(bikes);
+
+        return ResponseEntity.ok(bikesSaved);
+    }
+
     @GetMapping("/byuser/{userId}")
     public ResponseEntity<List<Bike>> getAllByUserId(@PathVariable("userId") int userId){
         List<Bike> bikeList = bikeService.getBikesByUserId(userId);

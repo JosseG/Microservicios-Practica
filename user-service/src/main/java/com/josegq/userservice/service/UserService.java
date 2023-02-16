@@ -51,6 +51,12 @@ public class UserService {
         return usernow;
     }
 
+
+    public List<User> saveAll(List<User> users){
+        List<User> usersnow = userRepository.saveAll(users);
+        return usersnow;
+    }
+
     public List<Car> getCars(int userId){
         List<Car> carList = restTemplate.getForObject("http://car-service/car/byuser/" + userId,List.class);
         return carList;

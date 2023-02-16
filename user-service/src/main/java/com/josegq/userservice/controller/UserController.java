@@ -49,6 +49,14 @@ public class UserController {
         return ResponseEntity.ok(userSaved);
     }
 
+
+    @PostMapping("/saveall")
+    public ResponseEntity<List<User>> saveAll(@RequestBody List<User> users ){
+        List<User> usersSaved = userService.saveAll(users);
+
+        return ResponseEntity.ok(usersSaved);
+    }
+
     @CircuitBreaker(name = "carsCB", fallbackMethod = "fallbackgetCars")
     @GetMapping("/cars/{userid}")
     public ResponseEntity<List<Car>> getCars(@PathVariable("userid") int userId){
