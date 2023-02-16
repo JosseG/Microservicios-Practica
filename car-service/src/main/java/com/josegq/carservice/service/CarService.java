@@ -20,7 +20,7 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public Car getCarById(int id){
+    public Car getCarById(String id){
         if(carRepository.findById(id).isEmpty()){
             return null;
         }

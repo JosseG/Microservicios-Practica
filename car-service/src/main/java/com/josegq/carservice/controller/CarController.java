@@ -28,7 +28,7 @@ public class CarController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Car> getById(@PathVariable("id") int id ){
+    public ResponseEntity<Car> getById(@PathVariable("id") String id ){
         Car car = carService.getCarById(id);
         if(car == null)
             return ResponseEntity.notFound().build();
